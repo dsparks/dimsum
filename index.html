@@ -371,31 +371,86 @@
     </section>
 
   <!-- Examples -->
-  <section id="examples" class="card" aria-labelledby="examples-h">
+<section id="examples" class="card" aria-labelledby="examples-h">
   <h2 id="examples-h"><span class="rule-marker">5</span>Example Deal</h2>
-  <p>This example shows one full 52‑card deck dealt evenly to four players (13 cards each). Scoring uses competitive categories for <em>Spades</em> (most non‑face) and <em>Longest Streak</em> (3+ consecutive ranks in‑suit). <span class="example">Sanity check: exactly 12 face cards (J/Q/K) appear across the four hands.</span></p>
-  <p><strong>Player 1 hand:</strong> <strong>♠</strong>: 3♠ 4♠ | <strong>♣</strong>: 10♣ J♣ K♣ | <strong>♦</strong>: A♦ 5♦ 6♦ 8♦ 10♦ | <strong>♥</strong>: 8♥ 10♥</p>
-  <p><strong>Player 2 hand:</strong> <strong>♠</strong>: 9♠ 10♠ Q♠ | <strong>♣</strong>: 4♣ 5♣ 6♣ 8♣ | <strong>♦</strong>: 3♦ 4♦ K♦ | <strong>♥</strong>: 3♥ 6♥ </p>
-  <p><strong>Player 3 hand:</strong> <strong>♠</strong>: 2♠ 6♠ 7♠ 8♠ | <strong>♣</strong>: 2♣ 3♣ 7♣ 9♣ | <strong>♦</strong>: 2♦ 7♦ 9♦ Q♦ | <strong>♥</strong>: 4♥</p>
-  <p><strong>Player 4 hand:</strong> <strong>♠</strong>: A♠ 5♠ J♠ K♠ | <strong>♣</strong>: A♣ Q♣ | <strong>♦</strong>: 8♦ J♦ | <strong>♥</strong>: A♥ 2♥ 5♥ 7♥ 9♥ Q♥</p>
-  <p class="example">Spades contest: most non‑face Spades = 4. Winner(s): Player 3 (each winner scores their lowest Spade rank).</p>
-  <p class="example">Longest streak at table: length 4. Winner(s) for 3+ only: Player 2 (5 points each).</p>
-  <ul>
-    <li>
-      <strong>Player 1</strong>: Spades 2 (lowest=3) → <strong>0</strong>; Clubs odd=1, even=2 → <strong>2</strong>; Diamonds 5 non‑face → <strong>0</strong>; Hearts sum=18 → ⌊√⌋=4 → <strong>4</strong>; Faces J♣ K♣ → <strong>4</strong>; Longest streak 3 in ♦ (A–5 OR 4–6) → <strong>0</strong>; Four‑of‑a‑kind — → <strong>0</strong>; Total = <strong>10</strong>.
-    </li>
-    <li>
-      <strong>Player 2</strong>: Spades 2 (lowest=9) → <strong>0</strong>; Clubs odd=1, even=3 → <strong>3</strong>; Diamonds 2 non‑face → <strong>0</strong>; Hearts sum=9 → ⌊√⌋=3 → <strong>3</strong>; Faces Q♠ K♦ → <strong>5</strong>; Longest streak 4 in ♣ (4–6) → <strong>5</strong>; Four‑of‑a‑kind — → <strong>0</strong>; Total = <strong>16</strong>.
-    </li>
-    <li>
-      <strong>Player 3</strong>: Spades 4 (lowest=2) → <strong>2</strong>; Clubs odd=3, even=1 → <strong>3</strong>; Diamonds 3 non‑face → <strong>0</strong>; Hearts sum=4 → ⌊√⌋=2 → <strong>2</strong>; Faces Q♦ → <strong>2</strong>; Longest streak 3 in ♠ (6–8) → <strong>0</strong>; Four‑of‑a‑kind — → <strong>0</strong>; Total = <strong>9</strong>.
-    </li>
-    <li>
-      <strong>Player 4</strong>: Spades 2 (lowest=1) → <strong>0</strong>; Clubs odd=1, even=1 → <strong>1</strong>; Diamonds 1 non‑face → <strong>0</strong>; Hearts sum=24 → ⌊√⌋=4 → <strong>4</strong>; Faces J♠ K♠ A♣ Q♣ J♦ Q♥ → <strong>13</strong>; Longest streak 3 in ♥ (A–2–? actually A–2 is 2, 5–7 is 3) → <strong>0</strong>; Four‑of‑a‑kind — → <strong>0</strong>; Total = <strong>18</strong>.
-    </li>
-  </ul>
-  <p><strong>Winner(s):</strong> Player 4 with 18 point(s).</p>
+  <div id="example-output" class="hint">Generating a fresh, fully‑validated example…</div>
 </section>
+<script>
+(function(){
+  const suits = ['♠','♣','♦','♥']; // ♠ ♣ ♦ ♥
+  const ranks = ['A','2','3','4','5','6','7','8','9','10','J','Q','K'];
+  const rankToVal = Object.fromEntries(['A','2','3','4','5','6','7','8','9','10'].map((r,i)=>[r,i+1]));
+  const rankIndex = Object.fromEntries(ranks.map((r,i)=>[r,i+1]));
+  const isFace = r => r==='J'||r==='Q'||r==='K';
+  const deck = []; for (const s of suits){ for (const r of ranks){ deck.push(r+s); }}
+  function shuffle(a){ for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]];} return a; }
+  function parse(c){ return {r:c.slice(0,-1), s:c.slice(-1)}; }
+  function bySuit(hand){ const m={}; for(const c of hand){ const {r,s}=parse(c); (m[s]??=[]).push(r);} for(const s in m){ m[s].sort((a,b)=>rankIndex[a]-rankIndex[b]); } return m; }
+  function nonFaceInSuit(hand,s){ return hand.filter(c=>c.endsWith(s) && !isFace(c.slice(0,-1)) ).map(c=>c.slice(0,-1)); }
+  function longestStreak(hand){ const m=bySuit(hand); let best=0, details={};
+    for(const s of suits){ const arr=(m[s]||[]).map(r=>rankIndex[r]).sort((a,b)=>a-b);
+      let b=0, runs=[], st=null, prev=null; if(arr.length){ st=prev=arr[0]; b=1; }
+      for(let i=1;i<arr.length;i++){ if(arr[i]===prev+1){ prev=arr[i]; } else { const L=prev-st+1; if(L>best){ best=L; } runs.push([st,prev]); st=prev=arr[i]; } }
+      if(st!==null){ const L=prev-st+1; if(L>best){ best=L; } runs.push([st,prev]); }
+      details[s]={len: Math.max(0,...runs.map(([a,b])=>b-a+1)), runs};
+    }
+    return {best, details};
+  }
+  function scoreHand(hand){ const m=bySuit(hand);
+    const clubVals=(m['♣']||[]).filter(r=>rankToVal[r]).map(r=>rankToVal[r]);
+    const odd=clubVals.filter(v=>v%2===1).length, even=clubVals.filter(v=>v%2===0).length;
+    const diamonds=(m['♦']||[]).filter(r=>rankToVal[r]).length;
+    const heartsSum=(m['♥']||[]).filter(r=>rankToVal[r]).map(r=>rankToVal[r]).reduce((a,b)=>a+b,0);
+    const faces=hand.filter(c=>isFace(c.slice(0,-1)));
+    return {clubs:{odd,even,points:Math.max(odd,even)}, diamonds:{count:diamonds,points: diamonds===4?4:0}, hearts:{sum:heartsSum,points:Math.floor(Math.sqrt(heartsSum))}, faces:{cards:faces, points:faces.reduce((t,c)=>t+({J:1,Q:2,K:3}[c.slice(0,-1)]),0)}};
+  }
+  function spadesContest(hand){ const sp=nonFaceInSuit(hand,'♠'); if(!sp.length) return {count:0,lowest:null,points:0}; const low=Math.min(...sp.map(r=>rankToVal[r])); return {count:sp.length,lowest:low,points:null}; }
+  function fmtHandGrouped(hand){ const m=bySuit(hand); return suits.map(s=> (m[s]&&m[s].length)?`<strong>${s}</strong>: ${m[s].map(r=>r+s).join(' ')}`:null).filter(Boolean).join(' | '); }
+  function runsText(runs){ const inv=Object.fromEntries(Object.entries(rankIndex).map(([k,v])=>[v,k])); return runs&&runs.length? runs.map(([a,b])=> a===b? inv[a] : `${inv[a]}–${inv[b]}`).join(', '): '—'; }
+
+  function generate(){ for(let attempts=0; attempts<999; attempts++){
+      const d=shuffle(deck.slice()); const hands=[d.slice(0,13), d.slice(13,26), d.slice(26,39), d.slice(39,52)];
+      const all=[...hands[0],...hands[1],...hands[2],...hands[3]]; const faces=all.filter(c=>isFace(c.slice(0,-1)));
+      if(new Set(all).size!==52 || faces.length!==12) continue; // must be a perfect deck with exactly 12 faces
+      // score
+      const indiv=hands.map(scoreHand);
+      const sp=hands.map(spadesContest); const maxSp=Math.max(...sp.map(x=>x.count)); const spW=sp.map((x,i)=> x.count===maxSp && maxSp>0 ? i: null).filter(x=>x!==null);
+      sp.forEach((x,i)=> x.points= spW.includes(i) && maxSp>0 ? x.lowest : 0);
+      const streaks=hands.map(longestStreak); const bestLen=Math.max(...streaks.map(s=>s.best)); const lsW=streaks.map((s,i)=> s.best===bestLen && bestLen>=3? i: null).filter(x=>x!==null);
+      const lsPts=hands.map((_,i)=> lsW.includes(i)?5:0);
+      const totals=hands.map((_,i)=> sp[i].points + indiv[i].clubs.points + indiv[i].diamonds.points + indiv[i].hearts.points + indiv[i].faces.points + lsPts[i]);
+      const hi=Math.max(...totals); const hiW=totals.map((t,i)=> t===hi? i: null).filter(x=>x!==null);
+      // render
+      let out='';
+      hands.forEach((h,i)=>{ out+=`<p><strong>Player ${i+1} hand:</strong> ${fmtHandGrouped(h.sort((a,b)=>{const sa=suits.indexOf(a.slice(-1))-suits.indexOf(b.slice(-1)); if(sa) return sa; return rankIndex[a.slice(0,-1)]-rankIndex[b.slice(0,-1)];}))}</p>`; });
+      out+=`<p class="example">Spades contest: most non‑face Spades = ${maxSp}. Winner(s): Player ${spW.map(i=>i+1).join(', ')||'—'}.</p>`;
+      out+=`<p class="example">Longest streak length at table: ${bestLen}. Winner(s) (3+ only): Player ${lsW.map(i=>i+1).join(', ')||'—'}.</p>`;
+      out+='<ul>';
+      hands.forEach((h,i)=>{
+        const sInd=indiv[i]; const sSp=sp[i]; const st=streaks[i];
+        const bestSuit = suits.reduce((a,b)=> st.details[a]?.len>=st.details[b]?.len? a : b);
+        const bestLenSuit = st.details[bestSuit]?.len||0; const runs = st.details[bestSuit]?.runs||[];
+        const facesList = sInd.faces.cards.length? sInd.faces.cards.join(' ') : '—';
+        out+=`<li><strong>Player ${i+1}</strong>: Spades ${sSp.count} (lowest=${sSp.lowest??'—'}) → <strong>${sSp.points}</strong>; ` +
+             `Clubs odd=${sInd.clubs.odd}, even=${sInd.clubs.even} → <strong>${sInd.clubs.points}</strong>; ` +
+             `Diamonds ${sInd.diamonds.count} non‑face → <strong>${sInd.diamonds.points}</strong>; ` +
+             `Hearts sum=${sInd.hearts.sum} → ⌊√⌋=${sInd.hearts.points} → <strong>${sInd.hearts.points}</strong>; ` +
+             `Faces ${facesList} → <strong>${sInd.faces.points}</strong>; ` +
+             `Longest streak ${bestLenSuit} in ${bestSuit} (${runsText(runs)}) → <strong>${lsPts[i]}</strong>; ` +
+             `Four‑of‑a‑kind — → <strong>0</strong>; ` +
+             `Total = <strong>${totals[i]}</strong>.</li>`;
+      });
+      out+='</ul>';
+      out+=`<p><strong>Winner(s):</strong> Player ${hiW.map(i=>i+1).join(', ')} with ${hi} point(s).</p>`;
+      out+=`<p class="example" style="margin-top:.6rem">Validation: <strong>${new Set(all).size}</strong>/52 unique cards, <strong>${faces.length}</strong>/12 face cards.</p>`;
+      document.getElementById('example-output').innerHTML = out;
+      return;
+    }
+    document.getElementById('example-output').innerHTML = '<em>Could not generate a valid example after many tries. Please reload.</em>';
+  }
+  generate();
+})();
+</script>
     
     <footer aria-label="Footer">
       Enjoy your Dim Sum! 🥟🃏
