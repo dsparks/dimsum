@@ -431,14 +431,14 @@
         const bestSuit = suits.reduce((a,b)=> st.details[a]?.len>=st.details[b]?.len? a : b);
         const bestLenSuit = st.details[bestSuit]?.len||0; const runs = st.details[bestSuit]?.runs||[];
         const facesList = sInd.faces.cards.length? sInd.faces.cards.join(' ') : '—';
-        out+=`<li><strong>Player ${i+1}</strong>: Spades ${sSp.count} (lowest=${sSp.lowest??'—'}) → <strong>${sSp.points}</strong>; ` +
-             `Clubs odd=${sInd.clubs.odd}, even=${sInd.clubs.even} → <strong>${sInd.clubs.points}</strong>; ` +
-             `Diamonds ${sInd.diamonds.count} non‑face → <strong>${sInd.diamonds.points}</strong>; ` +
-             `Hearts sum=${sInd.hearts.sum} → ⌊√⌋=${sInd.hearts.points} → <strong>${sInd.hearts.points}</strong>; ` +
-             `Faces ${facesList} → <strong>${sInd.faces.points}</strong>; ` +
-             `Longest streak ${bestLenSuit} in ${bestSuit} (${runsText(runs)}) → <strong>${lsPts[i]}</strong>; ` +
-             `Four‑of‑a‑kind — → <strong>0</strong>; ` +
-             `Total = <strong>${totals[i]}</strong>.</li>`;
+        out+=`<li><strong>Player ${i+1}</strong>: <br>Spades ${sSp.count} (lowest=${sSp.lowest??'—'}) → <strong>${sSp.points}</strong>; ` +
+             `<br>Clubs odd=${sInd.clubs.odd}, even=${sInd.clubs.even} → <strong>${sInd.clubs.points}</strong>; ` +
+             `<br>Diamonds ${sInd.diamonds.count} non‑face → <strong>${sInd.diamonds.points}</strong>; ` +
+             `<br>Hearts sum=${sInd.hearts.sum} → ⌊√⌋=${sInd.hearts.points} → <strong>${sInd.hearts.points}</strong>; ` +
+             `<br>Faces ${facesList} → <strong>${sInd.faces.points}</strong>; ` +
+             `<br>Longest streak ${bestLenSuit} in ${bestSuit} (${runsText(runs)}) → <strong>${lsPts[i]}</strong>; ` +
+             `<br>Four‑of‑a‑kind — → <strong>0</strong>; ` +
+             `<br>Total = <strong>${totals[i]}</strong>.</li>`;
       });
       out+='</ul>';
       out+=`<p><strong>Winner(s):</strong> Player ${hiW.map(i=>i+1).join(', ')} with ${hi} point(s).</p>`;
