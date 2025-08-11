@@ -372,65 +372,30 @@
 
   <!-- Examples -->
   <section id="examples" class="card" aria-labelledby="examples-h">
-    <h2 id="examples-h"><span class="rule-marker">5</span>Examples</h2>
-    <p>Below is one sample deal of a full 52-card deck divided between four players, with complete scoring breakdowns for each.</p>
-
-    <article>
-      <h3>Random Deal and Scoring</h3>
-      <p>The deck was shuffled and dealt into four 13-card hands. Each hand is scored in competition with the others for categories where relative position matters (Spades majority, longest streak).</p>
-      <ol>
-        <li><strong>Player 1:</strong> ♠A ♠5 ♠9 ♣2 ♣4 ♣K ♦3 ♦4 ♦5 ♥2 ♥4 ♥6 ♥Q
-          <ul>
-            <li><strong>Spades:</strong> 3 cards, lowest = 1 → 1 point (not majority)</li>
-            <li><strong>Clubs:</strong> Odd=0, Even=2 → 2 points</li>
-            <li><strong>Diamonds:</strong> 3 non-face → 0 points</li>
-            <li><strong>Hearts:</strong> 2+4+6=12 → √12≈3.46 → 3 points</li>
-            <li><strong>Face Cards:</strong> Q♥=2, K♣=3 → 5 points</li>
-            <li><strong>Longest Streak:</strong> ♦3–♦4–♦5 (3-card) → wins streak → 5 points</li>
-            <li><strong>Four-of-a-Kind:</strong> none</li>
-            <li><strong>Total:</strong> 16</li>
-          </ul>
-        </li>
-        <li><strong>Player 2:</strong> ♠2 ♠4 ♠J ♠K ♣3 ♣5 ♣7 ♦2 ♦6 ♥3 ♥5 ♥7 ♥9
-          <ul>
-            <li><strong>Spades:</strong> 4 cards, lowest=2 → wins majority → 2 points</li>
-            <li><strong>Clubs:</strong> Odd=3,5,7 → 3 cards, Even=0 → 3 points</li>
-            <li><strong>Diamonds:</strong> 2 non-face → 0 points</li>
-            <li><strong>Hearts:</strong> 3+5+7+9=24 → √24≈4.89 → 4 points</li>
-            <li><strong>Face Cards:</strong> J♠=1, K♠=3 → 4 points</li>
-            <li><strong>Longest Streak:</strong> none → 0 points</li>
-            <li><strong>Four-of-a-Kind:</strong> none</li>
-            <li><strong>Total:</strong> 13</li>
-          </ul>
-        </li>
-        <li><strong>Player 3:</strong> ♠3 ♠6 ♣6 ♣8 ♣9 ♦7 ♦8 ♦9 ♥8 ♥10 ♥J ♥K ♥A
-          <ul>
-            <li><strong>Spades:</strong> 2 cards → 0 points (not majority)</li>
-            <li><strong>Clubs:</strong> Odd=9, Even=6,8 → larger=2 → 2 points</li>
-            <li><strong>Diamonds:</strong> 3 non-face → 0 points</li>
-            <li><strong>Hearts:</strong> 8+10=18 → √18≈4.24 → 4 points</li>
-            <li><strong>Face Cards:</strong> J♥=1, K♥=3 → 4 points</li>
-            <li><strong>Longest Streak:</strong> ♦7–♦8–♦9 (3-card) → tie for streak → 5 points</li>
-            <li><strong>Four-of-a-Kind:</strong> none</li>
-            <li><strong>Total:</strong> 15</li>
-          </ul>
-        </li>
-        <li><strong>Player 4:</strong> ♠7 ♠8 ♠10 ♣10 ♦A ♦10 ♦Q ♥Q ♥K ♥5 ♥6 ♥7 ♥8
-          <ul>
-            <li><strong>Spades:</strong> 3 cards → 0 points (not majority)</li>
-            <li><strong>Clubs:</strong> Odd=0, Even=10 → 1 card → 1 point</li>
-            <li><strong>Diamonds:</strong> 2 non-face → 0 points</li>
-            <li><strong>Hearts:</strong> 5+6+7+8=26 → √26≈5.09 → 5 points</li>
-            <li><strong>Face Cards:</strong> Q♦=2, Q♥=2, K♥=3 → 7 points</li>
-            <li><strong>Longest Streak:</strong> none → 0 points</li>
-            <li><strong>Four-of-a-Kind:</strong> none</li>
-            <li><strong>Total:</strong> 13</li>
-          </ul>
-        </li>
-      </ol>
-      <p><strong>Result:</strong> Player 1 wins with 16 points.</p>
-    </article>
-  </section>
+  <h2 id="examples-h"><span class="rule-marker">5</span>Example Deal</h2>
+  <p>This example shows one full 52‑card deck dealt evenly to four players (13 cards each). Scoring uses competitive categories for <em>Spades</em> (most non‑face) and <em>Longest Streak</em> (3+ consecutive ranks in‑suit). <span class="example">Sanity check: exactly 12 face cards (J/Q/K) appear across the four hands.</span></p>
+  <p><strong>Player 1 hand:</strong> <strong>♠</strong>: 3♠ 4♠ | <strong>♣</strong>: 10♣ J♣ K♣ | <strong>♦</strong>: A♦ 5♦ 6♦ 8♦ 10♦ | <strong>♥</strong>: 8♥ 10♥</p>
+  <p><strong>Player 2 hand:</strong> <strong>♠</strong>: 9♠ 10♠ Q♠ | <strong>♣</strong>: 4♣ 5♣ 6♣ 8♣ | <strong>♦</strong>: 3♦ 4♦ K♦ | <strong>♥</strong>: 3♥ 6♥ </p>
+  <p><strong>Player 3 hand:</strong> <strong>♠</strong>: 2♠ 6♠ 7♠ 8♠ | <strong>♣</strong>: 2♣ 3♣ 7♣ 9♣ | <strong>♦</strong>: 2♦ 7♦ 9♦ Q♦ | <strong>♥</strong>: 4♥</p>
+  <p><strong>Player 4 hand:</strong> <strong>♠</strong>: A♠ 5♠ J♠ K♠ | <strong>♣</strong>: A♣ Q♣ | <strong>♦</strong>: 8♦ J♦ | <strong>♥</strong>: A♥ 2♥ 5♥ 7♥ 9♥ Q♥</p>
+  <p class="example">Spades contest: most non‑face Spades = 4. Winner(s): Player 3 (each winner scores their lowest Spade rank).</p>
+  <p class="example">Longest streak at table: length 4. Winner(s) for 3+ only: Player 2 (5 points each).</p>
+  <ul>
+    <li>
+      <strong>Player 1</strong>: Spades 2 (lowest=3) → <strong>0</strong>; Clubs odd=1, even=2 → <strong>2</strong>; Diamonds 5 non‑face → <strong>0</strong>; Hearts sum=18 → ⌊√⌋=4 → <strong>4</strong>; Faces J♣ K♣ → <strong>4</strong>; Longest streak 3 in ♦ (A–5 OR 4–6) → <strong>0</strong>; Four‑of‑a‑kind — → <strong>0</strong>; Total = <strong>10</strong>.
+    </li>
+    <li>
+      <strong>Player 2</strong>: Spades 2 (lowest=9) → <strong>0</strong>; Clubs odd=1, even=3 → <strong>3</strong>; Diamonds 2 non‑face → <strong>0</strong>; Hearts sum=9 → ⌊√⌋=3 → <strong>3</strong>; Faces Q♠ K♦ → <strong>5</strong>; Longest streak 4 in ♣ (4–6) → <strong>5</strong>; Four‑of‑a‑kind — → <strong>0</strong>; Total = <strong>16</strong>.
+    </li>
+    <li>
+      <strong>Player 3</strong>: Spades 4 (lowest=2) → <strong>2</strong>; Clubs odd=3, even=1 → <strong>3</strong>; Diamonds 3 non‑face → <strong>0</strong>; Hearts sum=4 → ⌊√⌋=2 → <strong>2</strong>; Faces Q♦ → <strong>2</strong>; Longest streak 3 in ♠ (6–8) → <strong>0</strong>; Four‑of‑a‑kind — → <strong>0</strong>; Total = <strong>9</strong>.
+    </li>
+    <li>
+      <strong>Player 4</strong>: Spades 2 (lowest=1) → <strong>0</strong>; Clubs odd=1, even=1 → <strong>1</strong>; Diamonds 1 non‑face → <strong>0</strong>; Hearts sum=24 → ⌊√⌋=4 → <strong>4</strong>; Faces J♠ K♠ A♣ Q♣ J♦ Q♥ → <strong>13</strong>; Longest streak 3 in ♥ (A–2–? actually A–2 is 2, 5–7 is 3) → <strong>0</strong>; Four‑of‑a‑kind — → <strong>0</strong>; Total = <strong>18</strong>.
+    </li>
+  </ul>
+  <p><strong>Winner(s):</strong> Player 4 with 18 point(s).</p>
+</section>
     
     <footer aria-label="Footer">
       Enjoy your Dim Sum! 🥟🃏
