@@ -244,7 +244,7 @@
       <h2 id="setup-h"><span class="rule-marker">1</span>Setup</h2>
       <ul>
         <li>Shuffle the entire 52‑card standard deck thoroughly.</li>
-        <li>Deal cards so that each player has the same number, setting aside any remainder, face down.</li>
+        <li>Deal cards so that each player has the same number, setting aside any remainder face-down.</li>
         <li>Play <strong>three rounds</strong>, using the entire deck each round.</li>
       </ul>
       <div class="hint" role="note"><strong>Player count:</strong> Works best at 3–5. For 2 players, consider a dummy hand: deal a third hand face‑down and burn the top card of it each pass.</div>
@@ -276,7 +276,7 @@
           </div>
           <ul>
             <li>Count non‑face Spades (A=1, 2=2, …, 10=10).</li>
-            <li>Only the player with the most Spades scores their lowest Spade's rank.</li>
+            <li>Only the player with the most Spades scores their lowest Spade's rank. Everyone else scores 0.</li>
             <li>Tie: tied players score their own lowest Spade’s value.</li>
           </ul>
         </article>
@@ -370,6 +370,68 @@
       <div class="hint">Quick tip: Track scores per round in three columns, then add a bold total at the bottom. Your future self will thank you.</div>
     </section>
 
+  <!-- Examples -->
+  <section id="examples" class="card" aria-labelledby="examples-h">
+    <h2 id="examples-h"><span class="rule-marker">5</span>Examples</h2>
+    <p>Below is one sample deal of a full 52-card deck divided between four players, with complete scoring breakdowns for each.</p>
+
+    <article>
+      <h3>Random Deal and Scoring</h3>
+      <p>The deck was shuffled and dealt into four 13-card hands. Each hand is scored in competition with the others for categories where relative position matters (Spades majority, longest streak).</p>
+      <ol>
+        <li><strong>Player 1:</strong> ♠A ♠5 ♠9 ♣2 ♣4 ♣K ♦3 ♦4 ♦5 ♥2 ♥4 ♥6 ♥Q
+          <ul>
+            <li><strong>Spades:</strong> 3 cards, lowest = 1 → 1 point (not majority)</li>
+            <li><strong>Clubs:</strong> Odd=0, Even=2 → 2 points</li>
+            <li><strong>Diamonds:</strong> 3 non-face → 0 points</li>
+            <li><strong>Hearts:</strong> 2+4+6=12 → √12≈3.46 → 3 points</li>
+            <li><strong>Face Cards:</strong> Q♥=2, K♣=3 → 5 points</li>
+            <li><strong>Longest Streak:</strong> ♦3–♦4–♦5 (3-card) → wins streak → 5 points</li>
+            <li><strong>Four-of-a-Kind:</strong> none</li>
+            <li><strong>Total:</strong> 16</li>
+          </ul>
+        </li>
+        <li><strong>Player 2:</strong> ♠2 ♠4 ♠J ♠K ♣3 ♣5 ♣7 ♦2 ♦6 ♥3 ♥5 ♥7 ♥9
+          <ul>
+            <li><strong>Spades:</strong> 4 cards, lowest=2 → wins majority → 2 points</li>
+            <li><strong>Clubs:</strong> Odd=3,5,7 → 3 cards, Even=0 → 3 points</li>
+            <li><strong>Diamonds:</strong> 2 non-face → 0 points</li>
+            <li><strong>Hearts:</strong> 3+5+7+9=24 → √24≈4.89 → 4 points</li>
+            <li><strong>Face Cards:</strong> J♠=1, K♠=3 → 4 points</li>
+            <li><strong>Longest Streak:</strong> none → 0 points</li>
+            <li><strong>Four-of-a-Kind:</strong> none</li>
+            <li><strong>Total:</strong> 13</li>
+          </ul>
+        </li>
+        <li><strong>Player 3:</strong> ♠3 ♠6 ♣6 ♣8 ♣9 ♦7 ♦8 ♦9 ♥8 ♥10 ♥J ♥K ♥A
+          <ul>
+            <li><strong>Spades:</strong> 2 cards → 0 points (not majority)</li>
+            <li><strong>Clubs:</strong> Odd=9, Even=6,8 → larger=2 → 2 points</li>
+            <li><strong>Diamonds:</strong> 3 non-face → 0 points</li>
+            <li><strong>Hearts:</strong> 8+10=18 → √18≈4.24 → 4 points</li>
+            <li><strong>Face Cards:</strong> J♥=1, K♥=3 → 4 points</li>
+            <li><strong>Longest Streak:</strong> ♦7–♦8–♦9 (3-card) → tie for streak → 5 points</li>
+            <li><strong>Four-of-a-Kind:</strong> none</li>
+            <li><strong>Total:</strong> 15</li>
+          </ul>
+        </li>
+        <li><strong>Player 4:</strong> ♠7 ♠8 ♠10 ♣10 ♦A ♦10 ♦Q ♥Q ♥K ♥5 ♥6 ♥7 ♥8
+          <ul>
+            <li><strong>Spades:</strong> 3 cards → 0 points (not majority)</li>
+            <li><strong>Clubs:</strong> Odd=0, Even=10 → 1 card → 1 point</li>
+            <li><strong>Diamonds:</strong> 2 non-face → 0 points</li>
+            <li><strong>Hearts:</strong> 5+6+7+8=26 → √26≈5.09 → 5 points</li>
+            <li><strong>Face Cards:</strong> Q♦=2, Q♥=2, K♥=3 → 7 points</li>
+            <li><strong>Longest Streak:</strong> none → 0 points</li>
+            <li><strong>Four-of-a-Kind:</strong> none</li>
+            <li><strong>Total:</strong> 13</li>
+          </ul>
+        </li>
+      </ol>
+      <p><strong>Result:</strong> Player 1 wins with 16 points.</p>
+    </article>
+  </section>
+    
     <footer aria-label="Footer">
       Enjoy your Dim Sum! 🥟🃏
     </footer>
